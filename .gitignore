@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Visual Studio workspace folder
+.vs/
+*.user
+*.suo
+*.cache
