@@ -10,7 +10,7 @@ This repository contains the frontend scanning application built with React + Vi
 [Tech Stack](#tech-stack)<br />
 [Features](#features)<br />
 [Project Structure](#project-structure)<br />
-[Setup & Installation](#setup-&-installation)<br />
+[Setup & Installation](#setup--installation)<br />
 [System Workflow](#system-workflow)<br />
 
 ---
