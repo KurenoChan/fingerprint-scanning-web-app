@@ -1,16 +1,80 @@
-# React + Vite
+# 🧬 A DMIT System – Fingerprint Capture, ML Ridge Analysis & Luminous Integration
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A complete end‑to‑end system for capturing fingerprint images, processing ridge features, and returning analysis results to the Main Luminous System.
 
-Currently, two official plugins are available:
+This repository contains the frontend scanning application built with React + Vite, along with supporting documentation for development setup, environment configuration (safe placeholders only), and project structure.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The system uses:
+- **React + Vite** for the scanning frontend  
+- **Node.js / Express** for backend services  
+- **PostgreSQL** for database storage  
+- **AWS S3** for encrypted image storage  
+- **Background ML Worker** for asynchronous fingerprint processing
 
-## React Compiler
+## 🚀 Tech Stack
+| **Layer**   | **Technology**                            | **Notes**                                       |
+| ----------- | ----------------------------------------- | ----------------------------------------------- |
+| Frontend    | **React + Vite**                          | Fast, lightweight, perfect for camera workflows |
+| Storage     | AWS S3                                    | Encrypted at rest, private access               |
+| Backend API | Node.js / Fastify / Express (Your choice) | Handles uploads, validation & analysis trigger  |
+| Database    | PostgreSQL                                | Stores session + metadata                       |
+| ML Pipeline | Python Worker (optional)                  | Ridge counting & pattern extraction             |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+## 📦 Features
+- Secure fingerprint capture (30 images per session)
+- Real‑time quality validation (lighting, ridge clarity, alignment)
+- Auto-upload to AWS S3
+- Session handling (pending → processing → completed)
+- Integration with Luminous Main System
+- Admin dashboard support (monitoring only)
+- Automatic ML processing trigger
+- Clean folder structure and maintainable architecture
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📁 Project Structure (In Development)
+
+
+## 🛠️ Setup & Installation (In Development)
+
+---
+
+## 🚀 **System Overview**
+
+### **1. User Entry Point**
+Users begin in the **Main Luminous System**, which generates:
+- A short‑lifespan secure token
+- A `redirect_url`
+- A dynamic URL → `https://tarumt-app.com/scan?token=...`
+
+### **2. Token Validation**
+The TARUMT scanning app:
+- Validates the token via `POST /api/auth/validate`
+- Creates a new `ScanningSession`
+- Rejects invalid tokens and shows a retry page
+
+### **3. Fingerprint Capture (30 Images)**
+For each of 10 fingers × 3 angles (Left, Center, Right):
+- Camera opens
+- Quality checks (ridge visibility, alignment, lighting)
+- Auto‑capture
+- Upload to **S3**
+- Metadata saved to PostgreSQL
+
+### **4. Async ML Processing**
+Once all 30 images are present:
+- Background worker processes ridge counts & patterns
+- Aggregates results per finger
+- Generates overall left/right brain summaries
+
+### **5. Callback to Luminous**
+A final structured response is pushed back via:
+`POST /api/fingerprint/results`
+
+### **6. Admin Dashboard**
+Internal staff can:
+- View sessions
+- View images
+- Check processing status
+- Approve/reject low‑confidence results
+
+---
