@@ -4,14 +4,30 @@ A complete end‑to‑end system for capturing fingerprint images, processing ri
 
 This repository contains the frontend scanning application built with React + Vite, along with supporting documentation for development setup, environment configuration (safe placeholders only), and project structure.
 
+## Table of Contents
+
+[Overview](#overview)<br />
+[Tech Stack](##tech-stack)<br />
+[Features](##overview)<br />
+[Project Structure](##features)<br />
+[Setup & Installation](##overview)<br />
+[System Workflow](##overview)<br />
+
+---
+
+## Overview
+
 The system uses:
-- **React + Vite** for the scanning frontend  
-- **Node.js / Express** for backend services  
-- **PostgreSQL** for database storage  
-- **AWS S3** for encrypted image storage  
+
+- **React + Vite** for the scanning frontend
+- **Node.js / Express** for backend services
+- **PostgreSQL** for database storage
+- **AWS S3** for encrypted image storage
 - **Background ML Worker** for asynchronous fingerprint processing
 
-## 🚀 Tech Stack
+## Tech Stack
+
+
 | **Layer**   | **Technology**                            | **Notes**                                       |
 | ----------- | ----------------------------------------- | ----------------------------------------------- |
 | Frontend    | **React + Vite**                          | Fast, lightweight, perfect for camera workflows |
@@ -20,8 +36,7 @@ The system uses:
 | Database    | PostgreSQL                                | Stores session + metadata                       |
 | ML Pipeline | Python Worker (optional)                  | Ridge counting & pattern extraction             |
 
-
-## 📦 Features
+## Features
 - Secure fingerprint capture (30 images per session)
 - Real‑time quality validation (lighting, ridge clarity, alignment)
 - Auto-upload to AWS S3
@@ -31,29 +46,36 @@ The system uses:
 - Automatic ML processing trigger
 - Clean folder structure and maintainable architecture
 
-## 📁 Project Structure (In Development)
+## Project Structure
+> (In Development)
 
-
-## 🛠️ Setup & Installation (In Development)
+## Setup & Installation
+> (In Development)
 
 ---
 
-## 🚀 **System Overview**
+## **System Workflow**
 
 ### **1. User Entry Point**
+
 Users begin in the **Main Luminous System**, which generates:
+
 - A short‑lifespan secure token
 - A `redirect_url`
 - A dynamic URL → `https://tarumt-app.com/scan?token=...`
 
 ### **2. Token Validation**
+
 The TARUMT scanning app:
+
 - Validates the token via `POST /api/auth/validate`
 - Creates a new `ScanningSession`
 - Rejects invalid tokens and shows a retry page
 
 ### **3. Fingerprint Capture (30 Images)**
+
 For each of 10 fingers × 3 angles (Left, Center, Right):
+
 - Camera opens
 - Quality checks (ridge visibility, alignment, lighting)
 - Auto‑capture
@@ -61,17 +83,22 @@ For each of 10 fingers × 3 angles (Left, Center, Right):
 - Metadata saved to PostgreSQL
 
 ### **4. Async ML Processing**
+
 Once all 30 images are present:
+
 - Background worker processes ridge counts & patterns
 - Aggregates results per finger
 - Generates overall left/right brain summaries
 
 ### **5. Callback to Luminous**
+
 A final structured response is pushed back via:
 `POST /api/fingerprint/results`
 
 ### **6. Admin Dashboard**
+
 Internal staff can:
+
 - View sessions
 - View images
 - Check processing status
