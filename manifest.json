@@ -1,0 +1,23 @@
+{
+  "name": "DMIT Fingerprint System",
+  "short_name": "DMIT",
+  "description": "Prototype web application for DMIT fingerprint scanning and analysis integrated with Luminous system.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1f2937",
+  "orientation": "portrait",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/public/favicon-32x32.ico",
+      "sizes": "32x32",
+      "type": "image/ico"
+    },
+    {
+      "src": "/public/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ]
+}

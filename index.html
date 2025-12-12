@@ -1,13 +1,57 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>luminous</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!-- Ensures Internet Explorer uses the latest rendering engine. -->
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+	<!-- Title and Description -->
+	<title>DMIT Fingerprint System</title>
+	<meta name="description"
+		content="Prototype web application for DMIT fingerprint scanning and analysis integrated with Luminous system.">
+
+	<!-- Favicons and Apple Touch Icons -->
+	<link rel="icon" type="image/png"
+		href="https://luminous.com.my/wp-content/uploads/2025/01/Luminous-Square-Logo-150x150.png" sizes="32x32" />
+	<link rel="icon" type="image/png"
+		href="https://luminous.com.my/wp-content/uploads/2025/01/Luminous-Square-Logo-300x300.png" sizes="192x192" />
+	<link rel="apple-touch-icon"
+		href="https://luminous.com.my/wp-content/uploads/2025/01/Luminous-Square-Logo-300x300.png" />
+	<meta name="msapplication-TileImage"
+		content="https://luminous.com.my/wp-content/uploads/2025/01/Luminous-Square-Logo-300x300.png" />
+
+	<!-- Fallback local icons -->
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.ico" />
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-32x32.png" />
+
+	<!-- Preconnect for performance (optional, for any external assets or APIs) -->
+	<link rel="preconnect" href="https://luminous.com.my" crossorigin />
+
+	<!-- Manifest (optional for PWA) -->
+	<link rel="manifest" href="/manifest.json" />
+
+	<!-- Theme color for mobile browsers -->
+	<meta name="theme-color" content="#ffffff" />
+
+	<!-- Open Graph / Social Sharing (Optional) -->
+	<meta property="og:title" content="DMIT Fingerprint System" />
+	<meta property="og:description"
+		content="Prototype web application for DMIT fingerprint scanning and analysis integrated with Luminous system." />
+	<meta property="og:image"
+		content="https://luminous.com.my/wp-content/uploads/2025/01/Luminous-Square-Logo-300x300.png" />
+	<meta property="og:type" content="website">
+
+	<!-- CSS / Tailwind entry (optional: if Vite injects automatically) -->
+	<link rel="stylesheet" href="/src/index.css" />
+
+
+</head>
+
+<body class="bg-gray-50 text-gray-900 antialiased">
+	<div id="root"></div>
+	<script type="module" src="/src/main.jsx"></script>
+</body>
+
 </html>
